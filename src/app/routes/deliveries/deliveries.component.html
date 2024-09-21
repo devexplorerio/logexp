@@ -1,0 +1,17 @@
+
+<po-table
+  [p-columns]="columns"
+  [p-items]="deliveries() | paginate: { itemsPerPage: 10, currentPage }"
+  [p-draggable]="true"
+  [p-striped]="true"
+  [p-hide-table-search]="false"
+>
+</po-table>
+
+<br>
+
+<div class="paginator">
+  <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+</div>
+
+

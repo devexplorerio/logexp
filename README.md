@@ -1,27 +1,37 @@
-# LogExp
+# LogExp - Delivery Tracking Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+LogExp is an Angular application that provides a dashboard for tracking deliveries. It visualizes delivery data, allowing users to monitor delivery statuses, driver performance, and distribution across districts.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Dashboard:**
+    - View overall delivery statistics, including total deliveries, successful deliveries, pending deliveries, and failed deliveries.
+    - Analyze driver performance based on the number of deliveries completed and success rates.
+    - Visualize delivery distribution across different districts.
+- **Deliveries List:**
+    - Browse a comprehensive list of all deliveries.
+    - View detailed information for each delivery, including driver, origin, destination, and status.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone the repository: `git clone https://github.com/devexplorerio/logexp.git`
+2. Navigate to the project directory: `cd logexp`
+3. Install dependencies: `npm install`
 
-## Build
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Start the development server: `npm start`
+2. Open your browser and navigate to `http://localhost:4200/`
 
-## Running unit tests
+## Technologies Used
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular
+- TypeScript
+- HTML
+- CSS
+- [PO UI](https://po-ui.io/) (for UI components)
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## License
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is licensed under the [MIT License](LICENSE).

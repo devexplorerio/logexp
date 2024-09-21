@@ -1,1 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+
+.ngx-pagination .current {
+  background-color: var(--color-brand-01-base) !important;
+}

@@ -1,0 +1,37 @@
+<po-table
+  [p-columns]="columnsDelivered"
+  [p-items]="deliveriesDelivered()"
+  [p-draggable]="true"
+  [p-sort]="true"
+  [p-striped]="true"
+  [p-hide-table-search]="false"
+>
+</po-table>
+
+<br>
+
+<po-divider></po-divider>
+
+<po-table
+  [p-columns]="columnsFailure"
+  [p-items]="deliveriesFailure()"
+  [p-draggable]="true"
+  [p-sort]="true"
+  [p-striped]="true"
+  [p-hide-table-search]="false"
+>
+</po-table>
+
+<br>
+
+<po-divider></po-divider>
+
+<po-table
+  [p-columns]="columnsDistrict"
+  [p-items]="deliveriesDistrict()"
+  [p-draggable]="true"
+  [p-sort]="true"
+  [p-striped]="true"
+  [p-hide-table-search]="false"
+>
+</po-table>
