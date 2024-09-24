@@ -1,0 +1,13 @@
+<div class="po-row">
+  <po-search
+    class="po-md-12"
+    name="Po Search"
+    [p-items]="items()"
+    [p-search-type]="'action'"
+    [p-filter-select]="filterSelect()"
+    [p-filter-type]="filterMode"
+    p-disabled="false"
+    (p-filtered-items-change)="onFilter($event)"
+    (p-change-model)="changeModel($event)"
+  ></po-search>
+</div>

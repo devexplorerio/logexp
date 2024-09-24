@@ -5,6 +5,7 @@ import { PoDividerModule, PoInfoModule, PoTableColumn, PoTableModule } from '@po
 import { DeliveryService } from '../../core/services/delivery/delivery.service';
 import { Utils } from '../../shared/utils/utils';
 import { DeliveryStatus } from '../../shared/types/status';
+import { Delivery } from '../../shared/types/delivery';
 
 
 @Component({
@@ -57,7 +58,7 @@ export class DashboardComponent implements OnInit {
       ({
         motorista_nome: key,
         total_entregas: value?.length,
-        total_entregues: value?.filter((delivery: any) => delivery.status_entrega === 'ENTREGUE')?.length
+        total_entregues: value?.filter((delivery: Delivery) => delivery.status_entrega === 'ENTREGUE')?.length
       })
     );
 
@@ -72,7 +73,7 @@ export class DashboardComponent implements OnInit {
       ({
         motorista_nome: key,
         total_entregas: value?.length,
-        total_insucessos: value?.filter((delivery: any) => delivery.status_entrega === 'INSUCESSO')?.length
+        total_insucessos: value?.filter((delivery: Delivery) => delivery.status_entrega === 'INSUCESSO')?.length
       })
     );
 
@@ -87,7 +88,7 @@ export class DashboardComponent implements OnInit {
       ({
         cliente_destino_bairro: key,
         total_entregas: value?.length,
-        total_entregues: value?.filter((delivery: any) => delivery.status_entrega === 'ENTREGUE')?.length
+        total_entregues: value?.filter((delivery: Delivery) => delivery.status_entrega === 'ENTREGUE')?.length
       })
     );
 

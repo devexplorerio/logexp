@@ -1,10 +1,17 @@
 
+<h2>Entregas</h2>
+<p>Lista Geral de Entregas</p>
+
+<div class="search">
+  <app-search [items]="filteredDeliveries()" [filterSelect]="filterSelect" (filteredItems)="onFilter($event)"></app-search>
+</div>
+
 <po-table
   [p-columns]="columns"
-  [p-items]="deliveries() | paginate: { itemsPerPage: 10, currentPage }"
+  [p-items]="filteredDeliveries() | paginate: { itemsPerPage: 10, currentPage }"
   [p-draggable]="true"
+  [p-sort]="true"
   [p-striped]="true"
-  [p-hide-table-search]="false"
 >
 </po-table>
 

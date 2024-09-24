@@ -1,3 +1,6 @@
+
+<h2>Entregas Sucesso</h2>
+<p>Entregas com status Entregue por Motorista</p>
 <po-table
   [p-columns]="columnsDelivered"
   [p-items]="deliveriesDelivered()"
@@ -12,6 +15,8 @@
 
 <po-divider></po-divider>
 
+<h2>Entregas Insucesso</h2>
+<p>Entregas com status Insucesso por Motorista</p>
 <po-table
   [p-columns]="columnsFailure"
   [p-items]="deliveriesFailure()"
@@ -26,6 +31,8 @@
 
 <po-divider></po-divider>
 
+<h2>Entregas Sucesso</h2>
+<p>Entregas status Entregue por Bairro</p>
 <po-table
   [p-columns]="columnsDistrict"
   [p-items]="deliveriesDistrict()"

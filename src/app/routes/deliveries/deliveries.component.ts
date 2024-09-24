@@ -1,18 +1,18 @@
-import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PoTableModule, PoTableColumn, PoInfoModule } from '@po-ui/ng-components';
+import { PoTableModule, PoTableColumn, PoInfoModule, PoSearchFilterSelect } from '@po-ui/ng-components';
 import { lastValueFrom } from 'rxjs';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { DeliveryService } from '../../core/services/delivery/delivery.service';
 import { Delivery } from '../../shared/types/delivery';
+import { SearchComponent } from '../../shared/components/search/search.component';
 
 
 @Component({
   selector: 'app-deliveries',
   standalone: true,
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, PoTableModule, PoInfoModule, NgxPaginationModule],
+  imports: [CommonModule, PoTableModule, PoInfoModule, NgxPaginationModule, SearchComponent],
   templateUrl: './deliveries.component.html',
   styleUrl: './deliveries.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,11 +41,19 @@ export class DeliveriesComponent implements OnInit {
      }
   ];
 
+  filterSelect: PoSearchFilterSelect[] = [
+    { label: 'Motorista', value: 'motorista_nome' },
+    { label: 'Status', value: 'status_entrega' },
+    { label: 'Cliente Origem', value: 'cliente_origem_nome' },
+    { label: 'Cliente Destino', value: 'cliente_destino_nome' },
+  ];
+
   deliveries = signal<Delivery[]>([]);
+  filteredDeliveries = signal<Delivery[]>([]);
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
 
-  currentPage: any;
-
-  constructor(private deliveryService: DeliveryService) { }
+  constructor(private deliveryService: DeliveryService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.getDeliveries();
@@ -54,10 +62,18 @@ export class DeliveriesComponent implements OnInit {
   async getDeliveries() {
     const deliveries = await lastValueFrom(this.deliveryService.getDeliveries());
     this.deliveries.set(deliveries);
+    this.filteredDeliveries.set(deliveries);
   }
 
-  onPageChange(currentPage: any) {
+  onPageChange(currentPage: number) {
     this.currentPage = currentPage;
+  }
+
+  onFilter(filteredDeliveries: Delivery[]) {
+    const deliveries = filteredDeliveries.length === 0 ? this.deliveries() : filteredDeliveries;
+    this.filteredDeliveries.set(deliveries);
+    this.itemsPerPage = this.deliveries().length;
+    this.cdr.detectChanges();
   }
 
 }
